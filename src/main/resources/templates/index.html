@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+    <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>密码评估</title>
+        <meta http-equiv="Cache-Control" content="no-transform">
+        <meta http-equiv="Cache-Control" content="no-siteapp">
+        <link rel="stylesheet" href="/common.css?2019051" type="text/css">
+        <link rel="stylesheet" href="/index.css?2019051" type="text/css">
+        <script type="text/javascript" src="/jquery.js" charset="utf-8"></script>
+        <script>
+            $(document).ready(function () {
+                $("#submit").click(function () {
+                    $.ajax({
+                        type: "POST",
+                        dataType: "json",
+                        contentType: "application/x-www-form-urlencoded;charset=utf-8",
+                        url: "/tpsdt/algorithm",
+                        data: $('#form_pwd').serialize(),
+                        success: function (result) {
+                            $("#tip").html(result);
+                        }
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+    <div class="wrap">
+        <div class="content">
+            <div class="inner">
+                <div class="tabs" id="J-tabs">
+                    <ul class="tab-head clearfix" id="mytabs">
+                        <li class="tab on" id="jiemi" title="md5 decrypt"><a>算法评估</a></li>
+                    </ul>
+                </div>
+                <form id="form_pwd" name="form_pwd">
+                    <input id="pwd" name="pwd" value="" placeholder="输入要密码">
+                    <input id="submit" name="submit" value="提交" type="button">
+                    <input id="jiejia" name="jiejia" value="jie">
+                </form>
+                <div id="tip"></div>
+                <p>&nbsp;</p>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
